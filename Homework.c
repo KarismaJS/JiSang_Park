@@ -31,7 +31,7 @@ void title(){
   
  }
  
-}
+
 
 double calculation(int input, int num1, int num2){
  double result=0;
