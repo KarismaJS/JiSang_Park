@@ -37,9 +37,13 @@ double calculation(int input, int num1, int num2){
  double result=0;
  switch(input){
    case 1: result = add(num1, num2);
+   break;
   case 2: result = sub(num1, num2);
+   break;
   case 3: result = Mul(num1, num2);
+   break;
   case 4 : result = division(num1, num2);
+   break;
  }
  return result;
  }
