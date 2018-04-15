@@ -64,6 +64,7 @@ int main(){
   scanf("%d %d", &num1, &num2);
   
   printf("결과값은 %.3f .", calculation(input, num1, num2));
+ }
   
   return 0;
  
