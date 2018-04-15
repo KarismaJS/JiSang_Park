@@ -63,7 +63,8 @@ int main(){
   printf("계산을 할 두 정수를 입력하세요 :");
   scanf("%d %d", &num1, &num2);
   
-  double calculation(int input, int num1, int num2)
-  printf("결과값은  : %.3f 입니다. " , result);
+  printf("결과값은 %.3f .", calculation(input, num1, num2));
+  
+  return 0;
  
 }
