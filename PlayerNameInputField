@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace Snowbrothers.SnowFighters.OSProject
+{
+    //닉네임 입력 필드. 닉네임을 입력받으면, 게임 내에서 닉네임이 보인다.
+    [RequireComponent(typeof(InputField))]
+    public class PlayerNameInputField : MonoBehaviour
+    {
+        #region Private Variables
+        //PlayerPref Key를 avoid typos에 저장한다.
+        static string playerNamePrefKey = "PlayerName";
+        #endregion
+
+        #region MonoBehaviour CallBacks
+
+        //실행단계일 때 MonoBehaviour method는 GameObject를 유니티에 의해 호출한다.
+        void Start()
+        {
+            string defaultName = "";
+            InputField _inputField = this.GetComponent<InputField>();
+            if (_inputField != null)
+            {
+                if (PlayerPrefs.HasKey(playerNamePrefKey))
+                {
+                    defaultName = PlayerPrefs.GetString(playerNamePrefKey);
+                    _inputField.text = defaultName;
+                }
+            }
+            PhotonNetwork.playerName = defaultName;
+        }
+
+        #endregion
+
+        #region Public Methods
+        //향후 세션을 위해 플레이어의 이름을 설정하고, PlayerPrefs에 저장한다.
+        public void SetPlayerName(string value)
+        {
+            //#중요
+            PhotonNetwork.playerName = value + " "; // 값이 공백인 경우를 위해, 또는 닉네임이 업데이트 되지 않았을 때 강제로 공백을 삽입하여 준다.
+
+            PlayerPrefs.SetString(playerNamePrefKey, value);
+        }
+
+        #endregion
+
+    }
+}
